@@ -8,9 +8,8 @@ cdef class StatisticalOutlierRemovalFilter:
     """
     cdef pclfil.StatisticalOutlierRemoval_t *me
 
-    def __cinit__(self, PointCloud pc not None):
+    def __cinit__(self):
         self.me = new pclfil.StatisticalOutlierRemoval_t()
-        (<cpp.PCLBase_t*>self.me).setInputCloud (pc.thisptr_shared)
 
     def __dealloc__(self):
         del self.me
@@ -38,7 +37,7 @@ cdef class StatisticalOutlierRemovalFilter:
 
     def set_mean_k(self, int k):
         """
-        Set the number of points (k) to use for mean distance estimation. 
+        Set the number of points (k) to use for mean distance estimation.
         """
         self.me.setMeanK(k)
 
@@ -50,7 +49,7 @@ cdef class StatisticalOutlierRemovalFilter:
 
     def set_negative(self, bool negative):
         """
-        Set whether the indices should be returned, or all points except the indices. 
+        Set whether the indices should be returned, or all points except the indices.
         """
         (<pclfil.FilterIndices[cpp.PointXYZ]*>self.me).setNegative(negative)
 
@@ -70,9 +69,8 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZI:
     """
     cdef pclfil.StatisticalOutlierRemoval_PointXYZI_t *me
 
-    def __cinit__(self, PointCloud_PointXYZI pc not None):
+    def __cinit__(self):
         self.me = new pclfil.StatisticalOutlierRemoval_PointXYZI_t()
-        (<cpp.PCLBase_PointXYZI_t*>self.me).setInputCloud (pc.thisptr_shared)
 
     def __dealloc__(self):
         del self.me
@@ -100,7 +98,7 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZI:
 
     def set_mean_k(self, int k):
         """
-        Set the number of points (k) to use for mean distance estimation. 
+        Set the number of points (k) to use for mean distance estimation.
         """
         self.me.setMeanK(k)
 
@@ -112,7 +110,7 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZI:
 
     def set_negative(self, bool negative):
         """
-        Set whether the indices should be returned, or all points except the indices. 
+        Set whether the indices should be returned, or all points except the indices.
         """
         (<pclfil.FilterIndices[cpp.PointXYZ]*>self.me).setNegative(negative)
 
@@ -132,9 +130,8 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZRGB:
     """
     cdef pclfil.StatisticalOutlierRemoval_PointXYZRGB_t *me
 
-    def __cinit__(self, PointCloud_PointXYZRGB pc not None):
+    def __cinit__(self):
         self.me = new pclfil.StatisticalOutlierRemoval_PointXYZRGB_t()
-        (<cpp.PCLBase_PointXYZRGB_t*>self.me).setInputCloud (pc.thisptr_shared)
 
     def __dealloc__(self):
         del self.me
@@ -162,7 +159,7 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZRGB:
 
     def set_mean_k(self, int k):
         """
-        Set the number of points (k) to use for mean distance estimation. 
+        Set the number of points (k) to use for mean distance estimation.
         """
         self.me.setMeanK(k)
 
@@ -174,7 +171,7 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZRGB:
 
     def set_negative(self, bool negative):
         """
-        Set whether the indices should be returned, or all points except the indices. 
+        Set whether the indices should be returned, or all points except the indices.
         """
         (<pclfil.FilterIndices[cpp.PointXYZRGB]*>self.me).setNegative(negative)
 
@@ -194,9 +191,8 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZRGBA:
     """
     cdef pclfil.StatisticalOutlierRemoval_PointXYZRGBA_t *me
 
-    def __cinit__(self, PointCloud_PointXYZRGBA pc not None):
+    def __cinit__(self):
         self.me = new pclfil.StatisticalOutlierRemoval_PointXYZRGBA_t()
-        (<cpp.PCLBase_PointXYZRGBA_t*>self.me).setInputCloud (pc.thisptr_shared)
 
     def __dealloc__(self):
         del self.me
@@ -224,7 +220,7 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZRGBA:
 
     def set_mean_k(self, int k):
         """
-        Set the number of points (k) to use for mean distance estimation. 
+        Set the number of points (k) to use for mean distance estimation.
         """
         self.me.setMeanK(k)
 
@@ -236,7 +232,7 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZRGBA:
 
     def set_negative(self, bool negative):
         """
-        Set whether the indices should be returned, or all points except the indices. 
+        Set whether the indices should be returned, or all points except the indices.
         """
         self.me.setNegative(negative)
 
@@ -248,4 +244,3 @@ cdef class StatisticalOutlierRemovalFilter_PointXYZRGBA:
         cdef PointCloud_PointXYZRGBA pc = PointCloud_PointXYZRGBA()
         self.me.filter(pc.thisptr()[0])
         return pc
-
